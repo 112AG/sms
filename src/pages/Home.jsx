@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HeroData } from "../utils/data.js";
+import { Link } from "react-router-dom";
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -36,11 +37,23 @@ function Home() {
           </div>
 
           {/* Text Content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10 px-4">
-            <h1 className="text-3xl sm:text-5xl font-bold">{data.Heading}</h1>
-            <p className="mt-2 text-lg sm:text-xl">{data.subHeading}</p>
+          <div className="absolute inset-0 flex flex-col items-center sm:items-start sm:left-[10%] justify-center text-center text-white z-10 px-4">
+            <h1 className="text-[14px] sm:text-xl xl:text-[2xl] font-[400] bg-[#E42600] px-2 py-[1px]">{data.Heading}</h1>
+            <p className="mt-1 text-[22px] sm:text-[30px] xl:text-[44px] 2xl:text-[54px] font-[700]">{data.subHeading}</p>
+            <Link to={data.link} className="border-[1px] border-[#fff] rounded-[4px] text-[#fff] font-[100] bg-[#E42600]/80 px-4 py-1 xl:py-2 xl:px-8 xl:text-[20px] mt-2 xl:mt-6">{data.button}</Link>
+          </div>
+          {/* play button */}
+          <div className="absolute top-[50%] z-40 left-[76%] -translate-x-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center gap-2">
+            <div className="h-20 w-20 bg-white rounded-full flex items-center justify-center cursor-pointer">
+            <i class="ri-play-mini-fill text-5xl text-[#E42600] pl-2 tex-[14px]"></i>
+          </div>
+                      <div className="text-white font-[400] italic text-[20px]">
+              Watch Video <br /> Intro
+            </div>
           </div>
         </div>
+
+        
       ))}
 
       {/* Left Arrow */}
