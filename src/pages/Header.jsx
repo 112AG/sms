@@ -67,7 +67,7 @@ function Header() {
         </ul>
         <div className="h-full w-full bg-white absolute top-0 -z-50"></div>
         <div
-          className="bg-[#E42600] w-12 h-12 flex items-center justify-center rounded-full absolute right-8 sm:right-20 top-8 sm:top-10 cursor-pointer"
+          className="bg-[#E42600] w-8 h-8 flex items-center justify-center rounded-full absolute right-4 sm:right-20 top-4 sm:top-10 cursor-pointer"
           onClick={() => setIsOpen(false)}
         >
           <i className="ri-close-large-fill font-[700] text-xl text-[#fff] hover:rotate-[90deg] transition-all ease-in-out duration-300"></i>

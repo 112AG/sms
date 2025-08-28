@@ -19,3 +19,40 @@ export const HeroData = [
         link: '/contact'
     }
 ]
+
+
+// Team Data
+export const teamData = [
+  {
+    role: "Manager",
+    name: "Mr. Rahul Sharma",
+    image:
+      "https://cdni.iconscout.com/illustration/premium/thumb/man-illustration-svg-png-download-2790260.png",
+    description:
+      "At Sunrise Academy, the Manager ensures smooth operations, strategic planning, and effective execution of school policies, working closely with staff and parents to create a supportive environment.",
+  },
+  {
+    role: "Principal",
+    name: "Ms. Anjali Singh",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT399OHvkEl1ZwjoAEipdBNI5AkgvV7U0k-Dg&s",
+    description:
+      "At Sunrise Academy, we believe in the potential that exists in each individual and that it can be nurtured through the right guidance and encouragement. As the Principal, I feel honored and privileged to lead this institution.",
+  },
+  {
+    role: "Administrative",
+    name: "Mr. Suresh Kumar",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjnu7h2Fm5q_AMCP53tDYvb9_Xn85mCxTGpJ8wOAX5KJ2G3aFiF8Tm31MpDieRBJMI-M4&usqp=CAU",
+    description:
+      "The Administrative team at Sunrise Academy focuses on efficient management of resources, ensuring that academic and extracurricular activities are well-supported and aligned with our vision of excellence.",
+  },
+  {
+    role: "Coordinator",
+    name: "Mrs. Pooja Verma",
+    image:
+      "https://www.shutterstock.com/image-vector/man-vector-portrait-male-person-260nw-2336326589.jpg",
+    description:
+      "As Coordinator, I work to bridge communication between teachers, students, and parents, ensuring smooth academic progress and maintaining harmony in the school environment.",
+  },
+];
