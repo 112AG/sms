@@ -51,26 +51,27 @@ function Header() {
         transform transition-transform duration-500 ease-in-out py-22
         ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        <ul className="text-[#E42600] font-semibold flex flex-col justify-center items-center sm:items-start pl-4 gap-4 text-4xl sm:text-6xl">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/admission">Admission</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-        </ul>
+<ul className="text-[#E42600] font-semibold flex flex-col justify-center items-center sm:items-start pl-4 gap-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+  <li>
+    <Link to="/">Home</Link>
+  </li>
+  <li>
+    <Link to="/about">About Us</Link>
+  </li>
+  <li>
+    <Link to="/admission">Admission</Link>
+  </li>
+  <li>
+    <Link to="/contact">Contact Us</Link>
+  </li>
+</ul>
+
         <div className="h-full w-full bg-white absolute top-0 -z-50"></div>
         <div
-          className="bg-[#E42600] w-8 h-8 flex items-center justify-center rounded-full absolute right-4 sm:right-20 top-4 sm:top-10 cursor-pointer"
+          className="bg-[#E42600] md:scale-130 w-8 h-8 flex items-center justify-center rounded-full absolute right-4 sm:right-20 top-4 sm:top-10 pt-[0.5px] cursor-pointer"
           onClick={() => setIsOpen(false)}
         >
-          <i className="ri-close-large-fill font-[700] text-xl text-[#fff] hover:rotate-[90deg] transition-all ease-in-out duration-300"></i>
+          <i className="ri-close-large-fill font-[700] text-xl text-[#fff] active:rotate-[90deg] transition-all ease-in-out duration-500"></i>
         </div>
       </nav>
     </div>

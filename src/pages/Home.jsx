@@ -3,11 +3,12 @@ import { HeroData } from "../utils/data.js";
 import { Link } from "react-router-dom";
 import backgroundImage from "../assets/home/sunrisebackgroundimage.webp";
 import backgroundImagetwo from "../assets/home/sunrisefestival.webp";
-import { teamData } from "../utils/data.js";
+import { teamData, galleryData, faqs } from "../utils/data.js";
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slide, setSlide] = useState(0);
+  const [open, setOpen] = useState(null);
 
   const handleRight = () => {
     setCurrentIndex((prevIndex) =>
@@ -27,6 +28,8 @@ function Home() {
     }, 11000);
     return () => clearInterval(interval);
   }, []);
+
+  const toggle = (i) => setOpen((prev) => (prev === i ? null : i));
   return (
     <div className="pt-12 sm:pt-20 lg:pt-24 xl:pt-28">
       {/* pg-1 */}
@@ -160,7 +163,9 @@ function Home() {
           <div
             key={index}
             className={`${
-              index === slide ? "opacity-100" : "opacity-0 pointer-events-none translate-x-80"
+              index === slide
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none translate-x-80"
             } transition-opacity duration-500`}
           >
             {index === slide && (
@@ -194,14 +199,99 @@ function Home() {
             )}
           </div>
         ))}
-        
       </div>
 
       {/* pg-4 */}
-            <div
-        className="w-full h-full py-12 sm:py-0 sm:h-screen bg-cover bg-center relative flex flex-col items-center justify-center px-4 text-white"
+      <div
+        className="w-full h-full py-12 sm:py-0 sm:h-screen bg-cover bg-center relative flex flex-col items-center justify-start px-4 text-white"
         style={{ backgroundImage: `url(${backgroundImagetwo})` }}
-      ></div>
+      >
+        <h2 className="text-[#E42600] uppercase text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold py-2 sm:py-4 md:py-6">
+          Recent Image gallary
+        </h2>
+        {/* cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {galleryData.map((item) => (
+            <div
+              key={item.id}
+              className="relative group h-[260px] w-[320px] rounded-xl border border-[#E42600] overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 ease-in-out mx-auto"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent group-hover:opacity-0 opacity-100 transition-opacity duration-500"></div>
+
+              <div className="absolute inset-0 flex items-center justify-center group-hover:opacity-0 opacity-100 transition-opacity duration-500">
+                <p className="text-white text-lg font-semibold tracking-wide">
+                  {item.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* pg-5 */}
+      <div className="px-4 sm:px-8 lg:px-16 xl:px-20 flex justify-between item-center w-full h-full py-10">
+        <div className="rounded-2xl max-w-2xl border border-[#E42600]/0 overflow-hidden">
+          {faqs.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div
+                key={i}
+                className={`group border-b last:border-b-0 border-[#E42600]/20 bg-white transition-colors`}
+              >
+                <button
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
+                  className="w-full text-left px-4 sm:px-6 py-4 sm:py-5 flex items-center gap-3"
+                >
+                  {/* Accent bar (mobile hidden to keep clean) */}
+                  <span
+                    className={`hidden sm:inline-block h-6 w-1 rounded-full transition-colors ${
+                      isOpen ? "bg-[#E42600]" : "bg-[#E42600]/40"
+                    }`}
+                  />
+                  <span className="flex-1 font-semibold text-base sm:text-lg md:text-xl">
+                    {item.q}
+                  </span>
+
+                  {/* Plus / Minus icon */}
+                  <span
+                    className={`shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#E42600]/40 text-[#E42600] transition-all pb-1 duration-300 ${
+                      isOpen
+                        ? "rotate-45 bg-[#E42600]/10"
+                        : "rotate-0 bg-transparent"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </button>
+
+                {/* Answer with smooth height animation using CSS grid trick */}
+                <div
+                  id={`faq-panel-${i}`}
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden px-4 sm:px-6 pb-4 sm:pb-5 text-sm sm:text-base text-black/80">
+                    {item.a}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="w-[250px] sm:w-[300px] md:w-[400px] lg:w-[500px] xl:w-[550px] 2xl:w-[600px] h-auto object-contain bg-black overflow-hidden rounded-2xl"> <img src={backgroundImagetwo} alt="faq" className="object-center h-full w-full" /></div>
+      </div>
     </div>
   );
 }
